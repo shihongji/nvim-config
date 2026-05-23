@@ -1,0 +1,168 @@
+/* Vuepress-default-theme inspired markdown CSS for markdown-preview.nvim */
+
+:root {
+  --c-brand: #3eaf7c;
+  --c-brand-light: #4abf8a;
+  --c-text: #2c3e50;
+  --c-text-light: #476582;
+  --c-text-lighter: #8492a6;
+  --c-border: #eaecef;
+  --c-bg: #ffffff;
+  --c-bg-light: #f8f8f8;
+  --c-code-bg: #f6f6f6;
+  --c-tip-bg: rgba(62, 175, 124, 0.05);
+  --c-warning-bg: #fffbf0;
+  --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  --font-family-mono: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+body {
+  font-family: var(--font-family-base);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--c-text);
+  background: var(--c-bg);
+  margin: 0;
+  padding: 2rem 2.5rem;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--c-text);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+h1 { font-size: 2.2rem; }
+h2 {
+  font-size: 1.65rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--c-border);
+}
+h3 { font-size: 1.35rem; }
+h4 { font-size: 1.15rem; }
+h5 { font-size: 1rem; }
+h6 { font-size: 0.9rem; color: var(--c-text-light); }
+
+a {
+  color: var(--c-brand);
+  text-decoration: none;
+  font-weight: 500;
+}
+a:hover { text-decoration: underline; }
+
+p, ul, ol { line-height: 1.7; }
+
+ul, ol { padding-left: 1.5em; }
+
+li + li { margin-top: 0.25rem; }
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--c-border);
+  margin: 1.5rem 0;
+}
+
+blockquote {
+  margin: 1rem 0;
+  padding: 0.25rem 0 0.25rem 1rem;
+  border-left: 0.25rem solid var(--c-brand);
+  color: var(--c-text-light);
+  background: var(--c-tip-bg);
+  border-radius: 0 4px 4px 0;
+}
+
+/* inline code */
+code {
+  font-family: var(--font-family-mono);
+  font-size: 0.85em;
+  color: #476582;
+  background-color: rgba(27, 31, 35, 0.05);
+  padding: 0.15rem 0.45rem;
+  border-radius: 3px;
+}
+
+/* code blocks */
+pre, pre[class*="language-"] {
+  font-family: var(--font-family-mono);
+  background-color: #282c34;
+  color: #f8f8f2;
+  border-radius: 6px;
+  padding: 1.2rem 1.4rem;
+  margin: 1rem 0;
+  overflow-x: auto;
+  line-height: 1.5;
+  font-size: 0.85em;
+}
+pre code, pre[class*="language-"] code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+  font-size: inherit;
+  border-radius: 0;
+}
+
+/* tables */
+table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+th, td {
+  border: 1px solid #dfe2e5;
+  padding: 0.6em 1em;
+}
+tr:nth-child(2n) { background-color: #f6f8fa; }
+th {
+  background: var(--c-bg-light);
+  font-weight: 600;
+}
+
+/* images */
+img { max-width: 100%; border-radius: 4px; }
+
+/* task lists */
+input[type="checkbox"] { margin-right: 0.5em; }
+
+/* Vuepress-style custom containers (tip/warning/danger) — if your markdown
+   renderer emits them as .tip / .warning / .danger blocks */
+.tip, .warning, .danger {
+  padding: 0.1rem 1.5rem;
+  border-left-width: 0.5rem;
+  border-left-style: solid;
+  margin: 1rem 0;
+  border-radius: 0 4px 4px 0;
+}
+.tip {
+  background-color: var(--c-tip-bg);
+  border-color: var(--c-brand);
+}
+.warning {
+  background-color: var(--c-warning-bg);
+  border-color: #e7c000;
+  color: #6b5900;
+}
+.danger {
+  background-color: #ffe6e6;
+  border-color: #c00;
+  color: #4d0000;
+}
+
+/* details/summary */
+details {
+  background: var(--c-bg-light);
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  margin: 1rem 0;
+}
+summary { cursor: pointer; font-weight: 600; }
