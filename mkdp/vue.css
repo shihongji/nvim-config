@@ -10,13 +10,63 @@
   --c-bg: #ffffff;
   --c-bg-light: #f8f8f8;
   --c-code-bg: #f6f6f6;
+  --c-code-inline-bg: rgba(27, 31, 35, 0.05);
+  --c-code-inline-text: #476582;
+  --c-code-block-bg: #282c34;
+  --c-code-block-text: #f8f8f2;
+  --c-table-border: #dfe2e5;
+  --c-table-stripe: #f6f8fa;
   --c-tip-bg: rgba(62, 175, 124, 0.05);
   --c-warning-bg: #fffbf0;
+  --c-warning-border: #e7c000;
+  --c-warning-text: #6b5900;
+  --c-danger-bg: #ffe6e6;
+  --c-danger-border: #c00;
+  --c-danger-text: #4d0000;
   --font-family-base: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   --font-family-mono: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+/* Dark mode: track the plugin's own theme toggle (data-theme="dark" on <html>)
+   so the page body always matches the chrome. The plugin sets this based on
+   vim.g.mkdp_theme, which we derive from vim.o.background. */
+[data-theme="dark"] {
+    --c-brand: #4abf8a;
+    --c-brand-light: #5fcf9c;
+    --c-text: #d8dee9;
+    --c-text-light: #aab2c0;
+    --c-text-lighter: #7a8290;
+    --c-border: #2d333b;
+    --c-bg: #1a1d23;
+    --c-bg-light: #22262d;
+    --c-code-bg: #22262d;
+    --c-code-inline-bg: rgba(180, 200, 220, 0.10);
+    --c-code-inline-text: #c9d4e3;
+    --c-code-block-bg: #11141a;
+    --c-code-block-text: #e6e6e6;
+    --c-table-border: #2d333b;
+    --c-table-stripe: #22262d;
+    --c-tip-bg: rgba(74, 191, 138, 0.10);
+    --c-warning-bg: rgba(231, 192, 0, 0.10);
+    --c-warning-border: #e7c000;
+    --c-warning-text: #f0d97d;
+    --c-danger-bg: rgba(204, 0, 0, 0.12);
+    --c-danger-border: #ff6b6b;
+    --c-danger-text: #ffb3b3;
+}
+
+/* Paint <html>/<body> too — they sit outside <main data-theme="..."> and would
+   otherwise stay default-white. Uses :has() to read the plugin's theme attr. */
+html:has(main[data-theme="dark"]),
+html:has(main[data-theme="dark"]) body {
+  background: #1a1d23;
+}
+html:has(main[data-theme="light"]),
+html:has(main[data-theme="light"]) body {
+  background: #ffffff;
 }
 
 body {
@@ -84,8 +134,8 @@ blockquote {
 code {
   font-family: var(--font-family-mono);
   font-size: 0.85em;
-  color: #476582;
-  background-color: rgba(27, 31, 35, 0.05);
+  color: var(--c-code-inline-text);
+  background-color: var(--c-code-inline-bg);
   padding: 0.15rem 0.45rem;
   border-radius: 3px;
 }
@@ -93,8 +143,8 @@ code {
 /* code blocks */
 pre, pre[class*="language-"] {
   font-family: var(--font-family-mono);
-  background-color: #282c34;
-  color: #f8f8f2;
+  background-color: var(--c-code-block-bg);
+  color: var(--c-code-block-text);
   border-radius: 6px;
   padding: 1.2rem 1.4rem;
   margin: 1rem 0;
@@ -119,10 +169,10 @@ table {
   margin: 1rem 0;
 }
 th, td {
-  border: 1px solid #dfe2e5;
+  border: 1px solid var(--c-table-border);
   padding: 0.6em 1em;
 }
-tr:nth-child(2n) { background-color: #f6f8fa; }
+tr:nth-child(2n) { background-color: var(--c-table-stripe); }
 th {
   background: var(--c-bg-light);
   font-weight: 600;
@@ -149,13 +199,13 @@ input[type="checkbox"] { margin-right: 0.5em; }
 }
 .warning {
   background-color: var(--c-warning-bg);
-  border-color: #e7c000;
-  color: #6b5900;
+  border-color: var(--c-warning-border);
+  color: var(--c-warning-text);
 }
 .danger {
-  background-color: #ffe6e6;
-  border-color: #c00;
-  color: #4d0000;
+  background-color: var(--c-danger-bg);
+  border-color: var(--c-danger-border);
+  color: var(--c-danger-text);
 }
 
 /* details/summary */
